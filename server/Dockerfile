@@ -40,8 +40,3 @@ COPY --from=build --chown=65532:65532 /out/data /data
 USER nonroot:nonroot
 EXPOSE 8443 9090
 ENTRYPOINT ["/claude-s40-server"]
-RUN mkdir -p /certs && \
-    openssl req -x509 -newkey rsa:2048 -nodes \
-    -keyout /certs/server-key.pem \
-    -out /certs/server-chain.pem \
-    -days 365 -subj "/CN=localhost"
